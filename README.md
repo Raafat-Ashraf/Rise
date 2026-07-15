@@ -1,0 +1,204 @@
+# Rise — Real Investment & Smart Estates
+
+A premium, bilingual (Arabic / English) real estate investment website for **Rise**, built with Next.js 15, TypeScript, Tailwind, Framer Motion, GSAP and Sanity.
+
+Arabic is the default locale and the site is fully right-to-left; English is available at `/en`. The client manages the property portfolio from an embedded Sanity Studio at `/studio` — no code, no deploys.
+
+---
+
+## Quick start
+
+```bash
+npm install
+npm run dev
+```
+
+Open **http://localhost:3000** — it redirects to `/ar` (Arabic, RTL).
+
+That's it. **The site runs with no configuration.** Until you connect a Sanity project it serves a bundled demo portfolio of 11 realistic properties, so nothing looks empty on a fresh clone.
+
+### Commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Dev server at http://localhost:3000 |
+| `npm run build` | Production build (type-checked, no errors) |
+| `npm start` | Serve the production build |
+| `npm run typecheck` | TypeScript only, no build |
+| `npm run lint` | Next.js ESLint |
+| `npm run seed` | Push the demo portfolio into Sanity (needs credentials — see below) |
+
+---
+
+## Brand palette
+
+Every colour in the site is **sampled directly from `logo.png`** — no colour outside this palette is used anywhere. The values below are the measured means of the logo's own pixels:
+
+| Token | Hex | Where it comes from in the logo |
+| --- | --- | --- |
+| **Primary — gold** | `#BC8F43` | Mean of 49,087 saturated pixels in the "R" monogram + arc |
+| Gold highlight | `#DFB764` | Top of the monogram's gradient (90th lightness percentile) |
+| Gold shade | `#A06F1F` | Bottom of the same gradient (10th percentile) |
+| **Dark neutral — navy** | `#0B1425` | Mean of 55,156 pixels in the towers + RISE wordmark |
+| Navy core | `#071023` | Densest exact colour in that cluster |
+| **Light neutral — sand** | `#FEFEFE` | The logo's background field |
+
+They're defined once as CSS variables in [`app/globals.css`](app/globals.css) and as Tailwind theme tokens in [`tailwind.config.ts`](tailwind.config.ts), with full ramps (`gold-50…950`, `navy-50…950`, `sand-50…400`) interpolated from those anchors. Semantic aliases (`bg-background`, `text-primary`, …) flip automatically inside a `.theme-dark` section.
+
+**Type:** Sora for Latin display/UI, Cairo for Arabic (and as the Latin fallback inside Arabic copy, so mixed strings keep one type colour). Both self-hosted via `next/font` — no runtime request to Google, no layout shift.
+
+---
+
+## For the client: editing properties
+
+### 1. Create a Sanity project (once)
+
+1. Go to **[sanity.io/manage](https://sanity.io/manage)** and create a free account and project.
+2. Copy the **Project ID** from the project dashboard.
+3. Under **API → CORS origins**, add your site's URL (e.g. `http://localhost:3000` for local work and your live domain in production) with **"Allow credentials" ticked**. Studio can't sign in without this.
+
+### 2. Connect it
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in `NEXT_PUBLIC_SANITY_PROJECT_ID`, then restart the dev server.
+
+### 3. Load the demo content (optional)
+
+To start from the same 11 properties the demo shows — images and all:
+
+1. In **sanity.io/manage → API → Tokens**, create a token with **Editor** permission.
+2. Put it in `.env.local` as `SANITY_API_WRITE_TOKEN`.
+3. Run `npm run seed`.
+
+The seed is safe to re-run: documents use fixed IDs and images are matched by content hash, so nothing is ever duplicated.
+
+### 4. Log in and edit
+
+Go to **`/studio`** (e.g. `https://your-site.com/studio`) and sign in with the Sanity account from step 1. To give a colleague access, invite them from sanity.io/manage — they then use the same URL.
+
+Inside Studio, **Properties** is grouped by All / Featured on homepage / For sale / For rent / Off-plan / Sold. Each property has:
+
+- **Content** — title, URL slug, description, features (each in Arabic *and* English)
+- **Specs** — type, status, price, bedrooms, bathrooms, built area
+- **Media** — gallery images (first one is the cover; drag to reorder; alt text required)
+- **Location** — city, district, latitude/longitude
+- **Publishing** — featured flag, reference code, advisor, publish date
+
+Changes appear on the live site within **60 seconds** (see `REVALIDATE_SECONDS` in [`lib/properties.ts`](lib/properties.ts)).
+
+> **Note:** Arabic is required on every localised field because the site falls back to it. English is optional — if it's blank, Arabic is shown in both locales.
+
+---
+
+## File structure
+
+```
+├── app/
+│   ├── (site)/[locale]/          # The public site — one root layout, per-locale <html lang/dir>
+│   │   ├── layout.tsx            # Fonts, header/footer, metadata, JSON-LD base
+│   │   ├── page.tsx              # Home
+│   │   ├── properties/           # Listing (URL-synced filters) + [slug] detail
+│   │   ├── about/ services/ contact/
+│   │   ├── error.tsx             # Route error boundary
+│   │   ├── not-found.tsx         # Localised 404
+│   │   └── [...rest]/            # Sends unknown paths to the localised 404
+│   │   └── opengraph-image.tsx   # Social card, drawn per locale from the brand palette
+│   ├── (studio)/studio/          # Embedded Sanity Studio — its own root layout, never locale-prefixed
+│   ├── actions/contact.ts        # Server action: validates + hands off the enquiry
+│   ├── globals.css               # Brand CSS variables, base layer, reduced-motion rules
+│   ├── sitemap.ts  robots.ts     # SEO, with hreflang alternates
+│
+├── components/
+│   ├── hero/                     # Hero + the signature construction scene
+│   ├── home/                     # Home sections (incl. the scroll-driven city)
+│   ├── property/                 # Card, grid, filters, gallery/lightbox, map, agent card
+│   ├── about/ contact/ seo/      # Timeline, contact form, JSON-LD
+│   ├── layout/                   # Header, footer, language switcher, WhatsApp button
+│   └── ui/                       # Button, Card, Section, Input, Modal, RangeSlider,
+│                                 # Reveal/Stagger, Counter, Magnetic, PageHeader
+├── i18n/                         # next-intl routing + request config
+├── lib/                          # types, data access, filters, utils, demo portfolio
+├── messages/{ar,en}.json         # Every string on the site
+├── sanity/                       # Schema, GROQ queries, client
+├── scripts/seed.ts               # Demo portfolio → Sanity
+├── assets/fonts/                 # Cairo + Sora TTFs, read by the OG image generator
+├── public/images/properties/     # 28 local photographs (no CDN dependency)
+├── middleware.ts                 # Locale routing (skips /studio)
+└── sanity.config.ts              # Studio config + desk structure
+```
+
+---
+
+## The animations
+
+**Hero construction scene** ([`components/hero/HeroScene.tsx`](components/hero/HeroScene.tsx)) — an SVG skyline that assembles itself on a single GSAP timeline: a house (foundation → walls → roof craned in → windows), a 10-storey apartment tower (floors stack, then windows light up bottom-to-top), a luxury villa (wide footprint, glass frontage, pool fills, garden grows), a gated compound (units rise from the centre out, roofs drop, gate closes it off, greenery fills in) and a commercial building (curtain-wall panels clad the frame column by column, then the sign flickers on). A crane sweeps across the plot throughout, scaffolding drops away as each structure tops out, and trees, streetlights, cars and birds settle in at the end. It then keeps a slow idle life — the crane sways, windows flicker, the sign pulses.
+
+**Scroll-driven city** ([`components/home/ScrollCity.tsx`](components/home/ScrollCity.tsx)) — bound to the scrollbar rather than a timer. Scrubbing down lays foundations, courses bricks, stacks floors and drops roofs; scrubbing back up un-builds it. Each structure has its own ScrollTrigger keyed to its x-position, so the city grows rightward as it enters the viewport. The stat counters count up on the same scroll beat.
+
+Also: masked line-by-line hero reveal, three-plane parallax, staggered card reveals, magnetic buttons, hover lift, a sliding nav underline (shared `layoutId`), and an animated full-screen mobile menu.
+
+**Two rules hold throughout:**
+
+1. **The markup is the finished state.** Every construction tween is a GSAP `.from()`, so the scene's resting state is the completed city. No-JS, a failed hydration and `prefers-reduced-motion` all land on the polished skyline — the timeline simply never starts. Nothing is ever left stuck at `opacity: 0`.
+2. **Only `transform`, `opacity` and `fill` are animated** — all composited, nothing touching layout, so the scenes hold 60fps with ~120 animated nodes and never block interaction.
+
+---
+
+## Notable implementation decisions
+
+**Filters live in the URL.** [`lib/filters.ts`](lib/filters.ts) is the single source of truth for filter ⇄ query-string translation, used by both the server component that renders results and the client component that drives the controls, so they can't drift. A filtered view is shareable, linkable, and survives refresh and back/forward. A hand-mangled URL degrades to a broader result set rather than a 500.
+
+**The results grid stays on the server.** `PropertyFilters` is a client component that takes the grid as `children`, so filtering never ships the property data to the browser — only the rendered cards.
+
+**`loading.tsx` is deliberately absent.** A `loading.tsx` wraps its whole segment in a Suspense boundary, which lets Next flush the HTML shell — *and its 200 status* — before the page finishes. On any route that can call `notFound()`, that pins every 404 at HTTP 200 (a soft 404, which search engines penalise). Instead the properties listing does its data fetch inside its own Suspense boundary and shows a real skeleton, and `LanguageSwitcher` reads the query string from `window.location` on click rather than via `useSearchParams()` — which would have forced the same bailout on every page. Verified: unknown paths and bad slugs return a genuine **404**, real pages return **200**.
+
+**Sanity is optional, and never a single point of failure.** [`lib/properties.ts`](lib/properties.ts) tries Sanity and falls back to the bundled portfolio when it isn't configured *or is unreachable*, so a CMS outage can't take the marketing pages down.
+
+**Photography is local.** All 28 images are committed under `public/images/`, so the build and the site have no runtime dependency on an image CDN.
+
+**Maps need no API key.** The embed is OpenStreetMap; the "open in Google Maps" link hands off to Google for directions. The client never has to hold billing credentials for a static pin.
+
+**No stock faces on named people.** Team members, advisors and testimonial authors render as initials monograms rather than stock headshots attached to invented names.
+
+---
+
+## Accessibility & SEO
+
+- Semantic landmarks, a skip link, visible focus rings, and full keyboard support — including a real focus trap in the modal/lightbox (Tab cycles, Escape closes, focus returns to the trigger).
+- The dual-handle price/area slider is built from two native `<input type="range">` elements, so arrows/Home/End and screen-reader announcements work without reimplementation.
+- Live regions on the result count, the rotating testimonials and the lightbox counter.
+- `prefers-reduced-motion` is honoured globally and by every GSAP/Framer scene.
+- Per-page metadata, Open Graph + Twitter cards, `hreflang` alternates on every URL (including the sitemap), `robots.txt`, and JSON-LD for `RealEstateAgent`, `WebSite`, `BreadcrumbList` and each property listing.
+- The OG card is generated **per locale** at build time and drawn from the brand palette, so the Arabic share card is in Arabic. It lives inside `[locale]` deliberately: at the app root the locale middleware would redirect its URL. Property pages override it with their own cover photo. Fonts are supplied explicitly from `assets/fonts` — next/og's built-in face is Latin-only and throws on Arabic.
+
+---
+
+## Environment variables
+
+See [`.env.example`](.env.example). All are optional for local development.
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Enables `/studio` and live content. Without it, the demo portfolio is served. |
+| `NEXT_PUBLIC_SANITY_DATASET` | Usually `production` |
+| `NEXT_PUBLIC_SANITY_API_VERSION` | Pinned API date |
+| `SANITY_API_WRITE_TOKEN` | **`npm run seed` only.** Never exposed to the browser; never commit it. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin for metadata, sitemap, OG and JSON-LD. **Set this in production.** |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Digits only, no `+` — e.g. `201000000000` |
+| `NEXT_PUBLIC_CONTACT_PHONE` / `NEXT_PUBLIC_CONTACT_EMAIL` | Shown in the header, footer and agent cards |
+
+---
+
+## Before going live
+
+1. Set `NEXT_PUBLIC_SITE_URL` to the real domain — the sitemap, canonicals, OG tags and JSON-LD all derive from it.
+2. Set the real WhatsApp number, phone and email.
+3. Add the production domain to Sanity's CORS origins.
+4. **Wire up contact form delivery.** [`app/actions/contact.ts`](app/actions/contact.ts) validates the submission server-side and currently logs it — the mail provider (Resend, SendGrid, a CRM webhook) is the client's choice. There's a marked spot for it; everything around it already works.
+5. Same for the footer newsletter ([`components/layout/Newsletter.tsx`](components/layout/Newsletter.tsx)) — validation and states are real, the submit is a local stub.
+6. Replace the demo copy and photography with the real portfolio.
+#   R i s e  
+ 
