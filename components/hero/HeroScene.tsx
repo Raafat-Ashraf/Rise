@@ -338,7 +338,17 @@ export function HeroScene({ className }: { className?: string }) {
       className={className}
       role="img"
       aria-label={t('sceneLabel')}
-      preserveAspectRatio="xMidYMax meet"
+      /*
+       * `slice`, not `meet`: the viewBox (1200×560) is wide and short. On a
+       * tall narrow phone, "meet" shrinks the whole scene down to fit the
+       * available width, which leaves it as a thin strip stranded at the
+       * bottom of its container with empty space above — exactly the "barely
+       * visible until you scroll" symptom. "slice" instead scales the scene up
+       * to fill the container's full height (cropping the sides, the same way
+       * object-cover crops a photo), so the skyline actually occupies the
+       * space it's given on every screen size.
+       */
+      preserveAspectRatio="xMidYMax slice"
     >
       <defs>
         <linearGradient id="rise-gold" x1="0" y1="0" x2="1" y2="1">
