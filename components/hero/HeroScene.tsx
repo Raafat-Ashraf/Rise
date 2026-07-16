@@ -339,16 +339,18 @@ export function HeroScene({ className }: { className?: string }) {
       role="img"
       aria-label={t('sceneLabel')}
       /*
-       * `slice`, not `meet`: the viewBox (1200×560) is wide and short. On a
-       * tall narrow phone, "meet" shrinks the whole scene down to fit the
-       * available width, which leaves it as a thin strip stranded at the
-       * bottom of its container with empty space above — exactly the "barely
-       * visible until you scroll" symptom. "slice" instead scales the scene up
-       * to fill the container's full height (cropping the sides, the same way
-       * object-cover crops a photo), so the skyline actually occupies the
-       * space it's given on every screen size.
+       * "meet", not "slice": the scene is five distinct structures side by
+       * side, and on a narrow phone "slice" crops the outer ones off the
+       * sides to fill the container's height — the house or the commercial
+       * block would simply not be there. "meet" keeps the whole width in
+       * frame instead, the same way a widescreen photo letterboxes on a
+       * phone rather than losing its edges. It renders shorter on narrow
+       * screens as a result; that's the trade this scene makes, and the
+       * container was previously mis-sized (see the min-h-dvh fix in
+       * Hero.tsx) which is what actually caused it to be missed entirely —
+       * that's fixed now, so a shorter-but-complete band is what's left.
        */
-      preserveAspectRatio="xMidYMax slice"
+      preserveAspectRatio="xMidYMax meet"
     >
       <defs>
         <linearGradient id="rise-gold" x1="0" y1="0" x2="1" y2="1">

@@ -162,9 +162,10 @@ export function ScrollCity({ className }: { className?: string }) {
       className={className}
       role="img"
       aria-label={t('description')}
-      // See the matching comment in HeroScene.tsx — "slice" fills the
-      // container's full height on narrow viewports instead of letterboxing.
-      preserveAspectRatio="xMidYMax slice"
+      // See the matching comment in HeroScene.tsx — "meet" keeps every
+      // structure in frame on a narrow viewport instead of cropping the
+      // outer ones off the sides.
+      preserveAspectRatio="xMidYMax meet"
     >
       <defs>
         <linearGradient id="sc-gold" x1="0" y1="0" x2="1" y2="1">
