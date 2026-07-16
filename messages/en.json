@@ -1,0 +1,504 @@
+{
+  "brand": {
+    "name": "Rise",
+    "tagline": "Real Investment & Smart Estates",
+    "logoAlt": "Rise — Real Estate"
+  },
+  "nav": {
+    "home": "Home",
+    "properties": "Properties",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "switchLanguage": "Switch language",
+    "languageLabel": "Language",
+    "skipToContent": "Skip to main content",
+    "cta": "Book a consultation"
+  },
+  "meta": {
+    "home": {
+      "title": "Rise — Real Investment & Smart Estates",
+      "description": "Rise builds and manages high-end real estate portfolios. Villas, towers, compounds and commercial assets, selected for long-term yield."
+    },
+    "properties": {
+      "title": "Properties",
+      "description": "Browse the Rise portfolio: villas, penthouses, apartments, compounds and commercial assets for sale, for rent and off-plan."
+    },
+    "about": {
+      "title": "About",
+      "description": "Since 2009, Rise has grown from a single tower into a portfolio of more than 120 delivered assets across the region."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Investment advisory, buying, selling, property management and consulting — one team across the whole asset lifecycle."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Talk to the Rise investment desk. Offices in New Cairo, appointments Sunday to Thursday."
+    },
+    "property": {
+      "titleSuffix": "Rise"
+    }
+  },
+  "hero": {
+    "eyebrow": "Real Investment & Smart Estates",
+    "titleLine1": "We don't just sell property.",
+    "titleLine2": "We build value that rises.",
+    "ctaPrimary": "Explore the portfolio",
+    "ctaSecondary": "Speak to an advisor",
+    "scrollHint": "Scroll to build the city",
+    "sceneLabel": "An animated skyline in which a house, an apartment tower, a luxury villa, a gated compound and a commercial building are constructed piece by piece.",
+    "stats": {
+      "assets": "Assets delivered",
+      "value": "Portfolio value",
+      "yield": "Avg. annual yield"
+    }
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Selected assets",
+      "title": "Featured properties",
+      "description": "A short list from the current portfolio — each one underwritten, inspected and ready for viewing.",
+      "cta": "View all properties"
+    },
+    "services": {
+      "eyebrow": "What we do",
+      "title": "A team for the whole asset lifecycle",
+      "description": "Most firms hand you off between five different companies. Rise keeps acquisition, delivery and management under one roof.",
+      "cta": "All services"
+    },
+    "stats": {
+      "eyebrow": "By the numbers",
+      "title": "Sixteen years of compounding",
+      "description": "We measure ourselves on delivered assets and realised returns — not on listings posted.",
+      "items": {
+        "assets": { "value": 124, "label": "Assets delivered", "suffix": "+" },
+        "value": { "value": 2.4, "label": "Portfolio value", "suffix": "B EGP" },
+        "clients": { "value": 890, "label": "Investors served", "suffix": "+" },
+        "yield": { "value": 11.6, "label": "Avg. annual yield", "suffix": "%" }
+      }
+    },
+    "why": {
+      "eyebrow": "Why Rise",
+      "title": "Built for investors, not browsers",
+      "description": "Four commitments that shape every deal we take on.",
+      "items": {
+        "underwriting": {
+          "title": "Underwritten, not advertised",
+          "body": "Every asset arrives with a yield model, a five-year cost forecast and the comparables we used. If the numbers don't hold, we don't list it."
+        },
+        "delivery": {
+          "title": "We deliver what we sell",
+          "body": "Rise builds and hands over its own developments. The team that signs the contract is the team on site at handover."
+        },
+        "management": {
+          "title": "Managed after handover",
+          "body": "Tenanting, maintenance, collections and reporting. Your asset keeps earning without becoming your second job."
+        },
+        "transparency": {
+          "title": "One number, no surprises",
+          "body": "Fees, registration, maintenance and service charges are quoted on day one. The price you're shown is the price you pay."
+        }
+      }
+    },
+    "process": {
+      "eyebrow": "How it works",
+      "title": "From first call to first return",
+      "description": "Four steps, roughly ninety days from brief to income.",
+      "steps": {
+        "brief": { "title": "Brief", "body": "We map your capital, horizon and risk appetite against what the market is actually pricing." },
+        "select": { "title": "Select", "body": "You get a shortlist of three to five assets, each with a full yield model — never a catalogue dump." },
+        "acquire": { "title": "Acquire", "body": "We negotiate, handle due diligence, contracts and registration, and hand you the keys." },
+        "manage": { "title": "Manage", "body": "We tenant it, maintain it and report quarterly. You watch the return, not the paperwork." }
+      }
+    },
+    "testimonials": {
+      "eyebrow": "Investors",
+      "title": "What our clients say",
+      "description": "A portfolio is a long relationship. Here's how ours have gone.",
+      "items": {
+        "one": {
+          "quote": "I've bought through four developers in this city. Rise is the only one whose handover date matched the contract — and the only one still answering the phone two years later.",
+          "name": "Karim Al-Mansouri",
+          "role": "Private investor, 3 assets"
+        },
+        "two": {
+          "quote": "They talked me out of the unit I wanted and into one yielding three points higher. That conversation told me everything about who they work for.",
+          "name": "Nadia Haddad",
+          "role": "Managing Partner, Haddad Capital"
+        },
+        "three": {
+          "quote": "We placed a fund allocation across six Rise units. The quarterly reporting is cleaner than what we get from listed vehicles.",
+          "name": "Omar Sabbagh",
+          "role": "Head of Real Assets, Levant Fund"
+        },
+        "four": {
+          "quote": "First-time buyer, and nobody made me feel small for asking basic questions. The yield model was explained line by line until I understood it.",
+          "name": "Layla Fouad",
+          "role": "Investor, New Cairo"
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Next step",
+      "title": "Let's find the asset that fits your capital",
+      "description": "Thirty minutes with an advisor, no obligation. Bring your budget and horizon — we'll bring the numbers.",
+      "primary": "Book a consultation",
+      "secondary": "Browse the portfolio"
+    }
+  },
+  "properties": {
+    "eyebrow": "Portfolio",
+    "title": "Properties",
+    "description": "Every asset currently on the Rise book. Filter by what matters to your model.",
+    "resultCount": "{count, plural, =0 {No properties} one {# property} other {# properties}}",
+    "search": {
+      "label": "Search",
+      "placeholder": "Search by name, area or city…",
+      "submit": "Search"
+    },
+    "filters": {
+      "title": "Filters",
+      "open": "Filters",
+      "close": "Close filters",
+      "apply": "Show results",
+      "clear": "Clear all",
+      "clearOne": "Clear {field}",
+      "active": "{count, plural, =0 {No filters} one {# filter} other {# filters}} applied",
+      "type": "Property type",
+      "status": "Status",
+      "price": "Price range",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area (m²)",
+      "any": "Any",
+      "min": "Min",
+      "max": "Max",
+      "plus": "{count}+"
+    },
+    "sort": {
+      "label": "Sort by",
+      "newest": "Newest first",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low",
+      "areaDesc": "Largest area"
+    },
+    "empty": {
+      "title": "No properties match those filters",
+      "description": "Try widening the price range or clearing a filter. If you're after something specific, our desk can source off-market.",
+      "clear": "Clear all filters",
+      "contact": "Ask the desk"
+    },
+    "loading": "Loading properties…",
+    "card": {
+      "beds": "{count, plural, one {# bed} other {# beds}}",
+      "baths": "{count, plural, one {# bath} other {# baths}}",
+      "area": "{value} m²",
+      "view": "View details",
+      "featured": "Featured"
+    }
+  },
+  "property": {
+    "backToList": "Back to properties",
+    "gallery": {
+      "open": "Open gallery",
+      "viewAll": "View all {count} photos",
+      "close": "Close gallery",
+      "next": "Next image",
+      "previous": "Previous image",
+      "counter": "{current} of {total}",
+      "thumbnailAlt": "{title} — photo {index}"
+    },
+    "overview": "Overview",
+    "specs": {
+      "title": "Specifications",
+      "type": "Type",
+      "status": "Status",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Built area",
+      "location": "Location",
+      "reference": "Reference"
+    },
+    "features": {
+      "title": "Features & amenities"
+    },
+    "map": {
+      "title": "Location",
+      "openInMaps": "Open in Google Maps",
+      "unavailable": "Map coordinates for this property haven't been published yet."
+    },
+    "agent": {
+      "title": "Your advisor",
+      "defaultName": "Rise Investment Desk",
+      "defaultRole": "Senior advisor",
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "enquire": "Request a viewing",
+      "responseTime": "Typically replies within 2 hours"
+    },
+    "similar": {
+      "title": "Similar properties",
+      "description": "Comparable assets in the same bracket.",
+      "empty": "No comparable assets on the book right now."
+    },
+    "priceOnRequest": "Price on request",
+    "perMonth": "/month",
+    "shareLabel": "Share this property"
+  },
+  "propertyTypes": {
+    "villa": "Villa",
+    "apartment": "Apartment",
+    "penthouse": "Penthouse",
+    "townhouse": "Townhouse",
+    "chalet": "Chalet",
+    "office": "Office",
+    "retail": "Retail",
+    "land": "Land"
+  },
+  "propertyStatus": {
+    "for-sale": "For sale",
+    "for-rent": "For rent",
+    "off-plan": "Off-plan",
+    "sold": "Sold"
+  },
+  "about": {
+    "eyebrow": "About Rise",
+    "title": "We started with one tower and a stubborn idea",
+    "lead": "That a real estate firm should be judged on what its clients earn, not on what it manages to sell.",
+    "story": {
+      "title": "Our story",
+      "body1": "Rise began in 2009 with a single mixed-use tower in New Cairo and four people who had all quit the same brokerage on the same week. We'd spent years watching buyers sold whatever the firm needed to move that quarter, and we thought the whole model was upside down.",
+      "body2": "So we inverted it. We only list what we'd put our own money into, we publish the yield model behind every asset, and we stay on after handover to manage what we sold. It's slower. It costs us listings. It has also meant that most of our growth for sixteen years has come from clients buying a second, third and fourth time.",
+      "body3": "Today Rise has delivered 124 assets across residential, commercial and mixed-use, with 2.4 billion EGP under management. The team is 48 people. The idea hasn't changed."
+    },
+    "mission": {
+      "title": "Mission",
+      "body": "To make premium real estate investment legible — so a first-time buyer and an institutional allocator can both see exactly what they're buying, what it costs and what it will return.",
+      "vision": {
+        "title": "Vision",
+        "body": "To be the firm the region's investors call first, because the number we quote on day one is still the number on the day they exit."
+      },
+      "values": {
+        "title": "Values",
+        "items": {
+          "one": { "title": "Numbers before narrative", "body": "If we can't model it, we won't sell it." },
+          "two": { "title": "Stay on the hook", "body": "We manage what we deliver. Selling is not the finish line." },
+          "three": { "title": "Say the hard thing", "body": "We've talked clients out of more deals than we've talked them into." },
+          "four": { "title": "Build to last", "body": "Specified for the thirty-year owner, not the launch photos." }
+        }
+      }
+    },
+    "timeline": {
+      "eyebrow": "Track record",
+      "title": "Sixteen years, one direction",
+      "items": {
+        "2009": { "year": "2009", "title": "Four people, one tower", "body": "Rise is founded in New Cairo. The first asset — a 14-floor mixed-use tower — sells out before topping-out." },
+        "2013": { "year": "2013", "title": "The management arm", "body": "Clients keep asking us to run what we sold them. We stop saying no and open Rise Management." },
+        "2016": { "year": "2016", "title": "First compound", "body": "Rise Gardens: 88 townhouses, delivered eleven weeks early. Still our benchmark for handover." },
+        "2019": { "year": "2019", "title": "One billion under management", "body": "The portfolio crosses 1B EGP. Sixty-one percent of new capital comes from existing clients." },
+        "2022": { "year": "2022", "title": "Commercial & institutional", "body": "First fund allocation. Rise opens a dedicated desk for institutional real assets." },
+        "2025": { "year": "2025", "title": "124 assets, 2.4B under management", "body": "Rise passes 890 investors served, with a 94% management-renewal rate." }
+      }
+    },
+    "team": {
+      "eyebrow": "The team",
+      "title": "Who you'll actually be dealing with",
+      "description": "No call centre. You get a named advisor from the first call to the last report.",
+      "members": {
+        "one": { "name": "Yousef Darwish", "role": "Founder & Managing Partner", "bio": "Sixteen years underwriting assets in this market. Signs off on every acquisition Rise makes." },
+        "two": { "name": "Mariam Zaki", "role": "Head of Investment", "bio": "Built the yield model the whole firm runs on. Ex-institutional real assets." },
+        "three": { "name": "Hassan Riad", "role": "Director of Development", "bio": "Runs delivery. Has never missed a published handover date — and mentions it often." },
+        "four": { "name": "Salma Nour", "role": "Head of Client Portfolio", "bio": "Manages the 890. If you've bought through Rise, you have her mobile number." }
+      }
+    },
+    "cta": {
+      "title": "Come see the book",
+      "description": "The portfolio, the models, the fee schedule. Thirty minutes, no obligation.",
+      "primary": "Book a consultation"
+    }
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "One team, the whole lifecycle",
+    "lead": "Acquisition, delivery and management under one roof — so nobody gets to blame the other guy.",
+    "items": {
+      "investment": {
+        "title": "Investment advisory",
+        "tagline": "Where your capital actually works",
+        "body": "We model your capital against the market, then bring you three to five assets that fit — each with a yield forecast, a five-year cost model and the comparables behind it. You get the reasoning, not just the recommendation.",
+        "features": {
+          "one": "Portfolio strategy and horizon planning",
+          "two": "Full yield and cash-flow modelling per asset",
+          "three": "Off-market access through our developer desk",
+          "four": "Quarterly performance review"
+        }
+      },
+      "buying": {
+        "title": "Buying",
+        "tagline": "From shortlist to keys",
+        "body": "Negotiation, due diligence, contracts, registration and handover inspection. We run the whole transaction and hand you a snag-free unit — including the paperwork most firms leave you to chase alone.",
+        "features": {
+          "one": "Price negotiation on your side of the table",
+          "two": "Legal due diligence and title verification",
+          "three": "Contract review and registration",
+          "four": "Snagging inspection before you sign off"
+        }
+      },
+      "selling": {
+        "title": "Selling",
+        "tagline": "Priced to move, not to linger",
+        "body": "We price against real closed comparables, stage and shoot the asset properly, and take it to our investor book before it ever hits a portal. Most Rise resales close off-market.",
+        "features": {
+          "one": "Valuation from closed — not asking — comparables",
+          "two": "Staging, photography and floor plans",
+          "three": "First look for our 890-investor book",
+          "four": "Negotiation and closing management"
+        }
+      },
+      "management": {
+        "title": "Property management",
+        "tagline": "It earns without becoming a job",
+        "body": "Tenant sourcing and vetting, rent collection, maintenance, compliance and quarterly reporting. Ninety-four percent of our management clients renew, which is the only metric here worth quoting.",
+        "features": {
+          "one": "Tenant sourcing, vetting and contracts",
+          "two": "Rent collection and arrears handling",
+          "three": "Preventive maintenance and repairs",
+          "four": "Quarterly owner reporting"
+        }
+      },
+      "consulting": {
+        "title": "Consulting",
+        "tagline": "For developers and institutions",
+        "body": "Feasibility studies, unit-mix optimisation, pricing strategy and market positioning for developers and funds. We've underwritten 2.4 billion of it — we'll tell you if your plan doesn't clear the hurdle.",
+        "features": {
+          "one": "Feasibility and highest-and-best-use studies",
+          "two": "Unit mix and pricing strategy",
+          "three": "Market and competitor positioning",
+          "four": "Institutional due diligence support"
+        }
+      }
+    },
+    "featuresLabel": "What's included",
+    "cta": {
+      "title": "Not sure which one you need?",
+      "description": "Most clients start with a thirty-minute call and leave knowing exactly which service — sometimes none of them.",
+      "primary": "Talk to an advisor",
+      "secondary": "See the portfolio"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Talk to the investment desk",
+    "lead": "A named advisor, usually within two hours. Bring your budget and your horizon.",
+    "form": {
+      "title": "Send us a message",
+      "description": "Fill this in and an advisor will come back to you — no call centre, no drip campaign.",
+      "name": { "label": "Full name", "placeholder": "Karim Al-Mansouri" },
+      "email": { "label": "Email", "placeholder": "you@company.com" },
+      "phone": { "label": "Phone", "placeholder": "+20 100 000 0000", "optional": "Optional" },
+      "interest": {
+        "label": "I'm interested in",
+        "placeholder": "Select a service",
+        "options": {
+          "investment": "Investment advisory",
+          "buying": "Buying a property",
+          "selling": "Selling a property",
+          "management": "Property management",
+          "consulting": "Consulting",
+          "other": "Something else"
+        }
+      },
+      "budget": {
+        "label": "Budget",
+        "placeholder": "Select a range",
+        "optional": "Optional",
+        "options": {
+          "under5": "Under 5M EGP",
+          "5to15": "5M – 15M EGP",
+          "15to40": "15M – 40M EGP",
+          "over40": "Over 40M EGP",
+          "undecided": "Not decided yet"
+        }
+      },
+      "message": { "label": "Message", "placeholder": "Tell us what you're looking for, and your timeline…" },
+      "consent": "I agree to be contacted by Rise about my enquiry.",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "success": { "title": "Message sent", "body": "Thanks — an advisor will be in touch within two hours during business hours.", "again": "Send another message" },
+      "error": { "title": "That didn't send", "body": "Something went wrong on our side. Please try again, or call us directly." },
+      "validation": {
+        "nameMin": "Please enter your full name (at least 2 characters).",
+        "nameMax": "That name is too long.",
+        "emailInvalid": "Please enter a valid email address.",
+        "phoneInvalid": "Please enter a valid phone number.",
+        "interestRequired": "Please choose what you're interested in.",
+        "messageMin": "Please give us a little more detail (at least 10 characters).",
+        "messageMax": "Please keep it under 1000 characters.",
+        "consentRequired": "We need your consent to reply to you."
+      }
+    },
+    "info": {
+      "title": "Office",
+      "addressLabel": "Visit us",
+      "address": "Rise Tower, 90th Street North\nFifth Settlement, New Cairo\nCairo Governorate, Egypt",
+      "phoneLabel": "Call",
+      "whatsappLabel": "WhatsApp",
+      "emailLabel": "Email",
+      "hoursLabel": "Hours",
+      "hours": "Sunday – Thursday, 9:00 – 18:00\nFriday & Saturday, by appointment",
+      "directions": "Get directions"
+    },
+    "map": { "title": "Find us", "openInMaps": "Open in Google Maps" }
+  },
+  "footer": {
+    "about": "Rise designs, delivers and manages premium real estate assets across the region. Licensed, regulated, and still answering the phone after handover.",
+    "explore": "Explore",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "newsletter": {
+      "title": "The Rise brief",
+      "description": "New assets and a short market read. Once a month, no filler.",
+      "placeholder": "your@email.com",
+      "submit": "Subscribe",
+      "submitLabel": "Subscribe to the newsletter",
+      "success": "You're in — see you next month.",
+      "error": "Please enter a valid email address.",
+      "privacy": "We never share your address. Unsubscribe anytime."
+    },
+    "social": { "title": "Follow", "facebook": "Facebook", "instagram": "Instagram", "linkedin": "LinkedIn", "x": "X", "youtube": "YouTube" },
+    "rights": "© {year} Rise Real Estate. All rights reserved.",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "credits": "Real Investment & Smart Estates"
+  },
+  "whatsapp": { "label": "Chat with us on WhatsApp", "tooltip": "Talk to an advisor", "prefill": "Hello Rise — I'd like to ask about a property." },
+  "notFound": {
+    "code": "404",
+    "title": "This one's off the map",
+    "description": "The page you're after has moved or never existed. The portfolio, however, is right where you left it.",
+    "home": "Back to home",
+    "properties": "Browse properties"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred on our side. Try again — and if it keeps happening, our desk would like to hear about it.",
+    "retry": "Try again",
+    "home": "Back to home"
+  },
+  "common": {
+    "loading": "Loading…",
+    "readMore": "Read more",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "of": "of",
+    "currency": "EGP",
+    "area": "m²",
+    "new": "New"
+  }
+}

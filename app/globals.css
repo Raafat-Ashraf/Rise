@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /*
+   * Brand palette — sampled directly from logo.png.
+   * Values are space-separated RGB channels so Tailwind can apply
+   * opacity modifiers (e.g. `bg-primary/40`).
+   */
+  :root {
+    /* Primary — logo gold (#BC8F43) */
+    --gold-highlight: 223 183 100; /* #DFB764 */
+    --gold: 188 143 67; /* #BC8F43 */
+    --gold-shade: 160 111 31; /* #A06F1F */
+
+    /* Dark neutral — logo navy (#0B1425) */
+    --navy: 11 20 37; /* #0B1425 */
+    --navy-core: 7 16 35; /* #071023 */
+
+    /* Light neutral — logo background (#FEFEFE) */
+    --sand: 254 254 254; /* #FEFEFE */
+    --sand-warm: 244 241 234; /* #F4F1EA */
+
+    /* Semantic tokens (light theme) */
+    --background: var(--sand);
+    --foreground: var(--navy);
+    --primary: var(--gold);
+    --primary-foreground: var(--navy-core);
+    --secondary: var(--navy);
+    --secondary-foreground: var(--sand);
+    --muted: 244 241 234;
+    --muted-foreground: 92 107 133; /* navy-400 */
+    --border: 233 227 215; /* sand-300 */
+    --ring: var(--gold);
+
+    --header-height: 4.5rem;
+  }
+
+  /* Sections that sit on the deep navy ground */
+  .theme-dark,
+  .dark {
+    --background: var(--navy);
+    --foreground: var(--sand);
+    --primary: var(--gold);
+    --primary-foreground: var(--navy-core);
+    --secondary: var(--sand);
+    --secondary-foreground: var(--navy);
+    --muted: 20 32 51; /* navy-700 */
+    --muted-foreground: 148 160 180; /* navy-300 */
+    --border: 30 44 66; /* navy-600 */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  /* Arabic locale picks up the Cairo stack and slightly looser leading,
+     since Arabic glyphs carry taller ascenders/descenders. */
+  html[lang='ar'] body {
+    @apply font-arabic;
+    line-height: 1.85;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Numerals stay Latin in Arabic so prices/areas read consistently */
+  .numeric {
+    font-feature-settings: 'tnum' 1;
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  ::selection {
+    background: rgb(var(--gold) / 0.28);
+    color: rgb(var(--navy-core));
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--navy-core) / 0.06);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--gold) / 0.5);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--gold) / 0.8);
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Gold hairline used to separate dark sections */
+  .rule-gold {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--gold) / 0.6),
+      transparent
+    );
+    height: 1px;
+  }
+
+  .text-gold-gradient {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  /* Frosted panel for cards laid over photography */
+  .glass {
+    background: rgb(var(--navy-core) / 0.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgb(var(--sand) / 0.1);
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-muted;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--sand) / 0.55),
+      transparent
+    );
+  }
+
+  /* Screen-reader-only, but focusable (skip link) */
+  .sr-focusable:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] rounded-lg bg-primary px-4 py-2
+           text-sm font-semibold text-primary-foreground shadow-gold;
+  }
+}
+
+@layer utilities {
+  .gpu {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+  /* Promote only while animating; released on completion to free GPU memory */
+  .will-animate {
+    will-change: transform, opacity;
+  }
+}
+
+/*
+ * Reduced motion: strip transitions/animations and reveal anything that a
+ * JS timeline would otherwise have faded in, so no content is left invisible.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-animate],
+  [data-build] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
