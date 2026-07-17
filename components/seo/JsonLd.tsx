@@ -28,11 +28,11 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         '@context': 'https://schema.org',
         '@type': 'RealEstateAgent',
         '@id': `${siteUrl()}/#organization`,
-        name: locale === 'ar' ? 'أمجد للتطوير العقاري' : 'Amjad Developments',
+        name: locale === 'ar' ? 'أمجاد للتطوير العقاري' : 'Amjad Developments',
         alternateName: 'Amjad',
         description:
           locale === 'ar'
-            ? 'أمجد تُصمِّم وتُسلِّم وتُدير أصولاً عقارية راقية.'
+            ? 'أمجاد تُصمِّم وتُسلِّم وتُدير أصولاً عقارية راقية.'
             : 'Amjad designs, delivers and manages premium real estate assets.',
         slogan:
           locale === 'ar'
