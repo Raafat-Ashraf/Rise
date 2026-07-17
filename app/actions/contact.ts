@@ -49,7 +49,7 @@ export async function submitContactForm(
   try {
     // ── Wire up delivery here ───────────────────────────
     // e.g. await resend.emails.send({
-    //        from: 'site@rise-estates.com',
+    //        from: 'site@amjad-developments.com',
     //        to: process.env.CONTACT_INBOX!,
     //        replyTo: enquiry.email,
     //        subject: `[${enquiry.interest}] ${enquiry.name}`,

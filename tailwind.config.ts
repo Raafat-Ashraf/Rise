@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Rise design tokens.
+ * Amjad design tokens.
  *
  * Every colour below is derived from `logo.png` by sampling its opaque pixels:
  *   gold  — mean of 49,087 saturated px in the "R" monogram + arc  -> #BC8F43

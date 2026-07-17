@@ -37,7 +37,7 @@ export const property = defineType({
       title: 'Title',
       type: 'localeString',
       group: 'content',
-      description: 'The property name, e.g. "Rise Gardens Villa 12".',
+      description: 'The property name, e.g. "Amjad Gardens Villa 12".',
       validation: (rule) => rule.required(),
     }),
     defineField({

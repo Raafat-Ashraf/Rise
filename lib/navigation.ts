@@ -19,8 +19,5 @@ export const serviceLinks = [
 ] as const;
 
 export const socialLinks = [
-  { key: 'instagram', href: 'https://instagram.com' },
-  { key: 'linkedin', href: 'https://linkedin.com' },
-  { key: 'facebook', href: 'https://facebook.com' },
-  { key: 'x', href: 'https://x.com' },
+  { key: 'facebook', href: 'https://www.facebook.com/AMJADDevEG' },
 ] as const;

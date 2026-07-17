@@ -28,26 +28,26 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         '@context': 'https://schema.org',
         '@type': 'RealEstateAgent',
         '@id': `${siteUrl()}/#organization`,
-        name: locale === 'ar' ? 'رايز للاستثمار العقاري' : 'Rise Real Estate',
-        alternateName: 'Rise',
+        name: locale === 'ar' ? 'أمجد للتطوير العقاري' : 'Amjad Developments',
+        alternateName: 'Amjad',
         description:
           locale === 'ar'
-            ? 'رايز تُصمِّم وتُسلِّم وتُدير أصولاً عقارية راقية.'
-            : 'Rise designs, delivers and manages premium real estate assets.',
+            ? 'أمجد تُصمِّم وتُسلِّم وتُدير أصولاً عقارية راقية.'
+            : 'Amjad designs, delivers and manages premium real estate assets.',
         slogan:
           locale === 'ar'
             ? 'استثمار حقيقي وعقارات ذكية'
             : 'Real Investment & Smart Estates',
         url: absoluteUrl(`/${locale}`),
-        logo: absoluteUrl('/logo.png'),
-        image: absoluteUrl('/logo.png'),
+        logo: absoluteUrl('/logo.jpg'),
+        image: absoluteUrl('/logo.jpg'),
         telephone: contact.phone,
         email: contact.email,
         foundingDate: '2009',
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Rise Tower, 90th Street North, Fifth Settlement',
+          streetAddress: 'Amjad Tower, 90th Street North, Fifth Settlement',
           addressLocality: 'New Cairo',
           addressRegion: 'Cairo Governorate',
           addressCountry: 'EG',
@@ -62,11 +62,7 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
           },
         ],
         areaServed: { '@type': 'Country', name: 'Egypt' },
-        sameAs: [
-          'https://instagram.com',
-          'https://linkedin.com',
-          'https://facebook.com',
-        ],
+        sameAs: ['https://www.facebook.com/AMJADDevEG'],
       }}
     />
   );
@@ -79,7 +75,7 @@ export function WebSiteJsonLd({ locale }: { locale: Locale }) {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         '@id': `${siteUrl()}/#website`,
-        name: 'Rise',
+        name: 'Amjad',
         url: absoluteUrl(`/${locale}`),
         inLanguage: locale,
         publisher: { '@id': `${siteUrl()}/#organization` },

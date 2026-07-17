@@ -1,8 +1,8 @@
 {
   "brand": {
-    "name": "Rise",
+    "name": "Amjad",
     "tagline": "Real Investment & Smart Estates",
-    "logoAlt": "Rise — Real Estate"
+    "logoAlt": "Amjad Developments"
   },
   "nav": {
     "home": "Home",
@@ -20,16 +20,16 @@
   },
   "meta": {
     "home": {
-      "title": "Rise — Real Investment & Smart Estates",
-      "description": "Rise builds and manages high-end real estate portfolios. Villas, towers, compounds and commercial assets, selected for long-term yield."
+      "title": "Amjad — Real Investment & Smart Estates",
+      "description": "Amjad builds and manages high-end real estate portfolios. Villas, towers, compounds and commercial assets, selected for long-term yield."
     },
     "properties": {
       "title": "Properties",
-      "description": "Browse the Rise portfolio: villas, penthouses, apartments, compounds and commercial assets for sale, for rent and off-plan."
+      "description": "Browse the Amjad portfolio: villas, penthouses, apartments, compounds and commercial assets for sale, for rent and off-plan."
     },
     "about": {
       "title": "About",
-      "description": "Since 2009, Rise has grown from a single tower into a portfolio of more than 120 delivered assets across the region."
+      "description": "Since 2009, Amjad has grown from a single tower into a portfolio of more than 120 delivered assets across the region."
     },
     "services": {
       "title": "Services",
@@ -37,10 +37,10 @@
     },
     "contact": {
       "title": "Contact",
-      "description": "Talk to the Rise investment desk. Offices in New Cairo, appointments Sunday to Thursday."
+      "description": "Talk to the Amjad investment desk. Offices in New Cairo, appointments Sunday to Thursday."
     },
     "property": {
-      "titleSuffix": "Rise"
+      "titleSuffix": "Amjad"
     }
   },
   "hero": {
@@ -66,7 +66,7 @@
     "services": {
       "eyebrow": "What we do",
       "title": "A team for the whole asset lifecycle",
-      "description": "Most firms hand you off between five different companies. Rise keeps acquisition, delivery and management under one roof.",
+      "description": "Most firms hand you off between five different companies. Amjad keeps acquisition, delivery and management under one roof.",
       "cta": "All services"
     },
     "stats": {
@@ -81,7 +81,7 @@
       }
     },
     "why": {
-      "eyebrow": "Why Rise",
+      "eyebrow": "Why Amjad",
       "title": "Built for investors, not browsers",
       "description": "Four commitments that shape every deal we take on.",
       "items": {
@@ -91,7 +91,7 @@
         },
         "delivery": {
           "title": "We deliver what we sell",
-          "body": "Rise builds and hands over its own developments. The team that signs the contract is the team on site at handover."
+          "body": "Amjad builds and hands over its own developments. The team that signs the contract is the team on site at handover."
         },
         "management": {
           "title": "Managed after handover",
@@ -120,7 +120,7 @@
       "description": "A portfolio is a long relationship. Here's how ours have gone.",
       "items": {
         "one": {
-          "quote": "I've bought through four developers in this city. Rise is the only one whose handover date matched the contract — and the only one still answering the phone two years later.",
+          "quote": "I've bought through four developers in this city. Amjad is the only one whose handover date matched the contract — and the only one still answering the phone two years later.",
           "name": "Karim Al-Mansouri",
           "role": "Private investor, 3 assets"
         },
@@ -130,7 +130,7 @@
           "role": "Managing Partner, Haddad Capital"
         },
         "three": {
-          "quote": "We placed a fund allocation across six Rise units. The quarterly reporting is cleaner than what we get from listed vehicles.",
+          "quote": "We placed a fund allocation across six Amjad units. The quarterly reporting is cleaner than what we get from listed vehicles.",
           "name": "Omar Sabbagh",
           "role": "Head of Real Assets, Levant Fund"
         },
@@ -152,7 +152,7 @@
   "properties": {
     "eyebrow": "Portfolio",
     "title": "Properties",
-    "description": "Every asset currently on the Rise book. Filter by what matters to your model.",
+    "description": "Every asset currently on the Amjad book. Filter by what matters to your model.",
     "resultCount": "{count, plural, =0 {No properties} one {# property} other {# properties}}",
     "search": {
       "label": "Search",
@@ -232,7 +232,7 @@
     },
     "agent": {
       "title": "Your advisor",
-      "defaultName": "Rise Investment Desk",
+      "defaultName": "Amjad Investment Desk",
       "defaultRole": "Senior advisor",
       "call": "Call",
       "whatsapp": "WhatsApp",
@@ -266,14 +266,14 @@
     "sold": "Sold"
   },
   "about": {
-    "eyebrow": "About Rise",
+    "eyebrow": "About Amjad",
     "title": "We started with one tower and a stubborn idea",
     "lead": "That a real estate firm should be judged on what its clients earn, not on what it manages to sell.",
     "story": {
       "title": "Our story",
-      "body1": "Rise began in 2009 with a single mixed-use tower in New Cairo and four people who had all quit the same brokerage on the same week. We'd spent years watching buyers sold whatever the firm needed to move that quarter, and we thought the whole model was upside down.",
+      "body1": "Amjad began in 2009 with a single mixed-use tower in New Cairo and four people who had all quit the same brokerage on the same week. We'd spent years watching buyers sold whatever the firm needed to move that quarter, and we thought the whole model was upside down.",
       "body2": "So we inverted it. We only list what we'd put our own money into, we publish the yield model behind every asset, and we stay on after handover to manage what we sold. It's slower. It costs us listings. It has also meant that most of our growth for sixteen years has come from clients buying a second, third and fourth time.",
-      "body3": "Today Rise has delivered 124 assets across residential, commercial and mixed-use, with 2.4 billion EGP under management. The team is 48 people. The idea hasn't changed."
+      "body3": "Today Amjad has delivered 124 assets across residential, commercial and mixed-use, with 2.4 billion EGP under management. The team is 48 people. The idea hasn't changed."
     },
     "mission": {
       "title": "Mission",
@@ -296,12 +296,12 @@
       "eyebrow": "Track record",
       "title": "Sixteen years, one direction",
       "items": {
-        "2009": { "year": "2009", "title": "Four people, one tower", "body": "Rise is founded in New Cairo. The first asset — a 14-floor mixed-use tower — sells out before topping-out." },
-        "2013": { "year": "2013", "title": "The management arm", "body": "Clients keep asking us to run what we sold them. We stop saying no and open Rise Management." },
-        "2016": { "year": "2016", "title": "First compound", "body": "Rise Gardens: 88 townhouses, delivered eleven weeks early. Still our benchmark for handover." },
+        "2009": { "year": "2009", "title": "Four people, one tower", "body": "Amjad is founded in New Cairo. The first asset — a 14-floor mixed-use tower — sells out before topping-out." },
+        "2013": { "year": "2013", "title": "The management arm", "body": "Clients keep asking us to run what we sold them. We stop saying no and open Amjad Management." },
+        "2016": { "year": "2016", "title": "First compound", "body": "Amjad Gardens: 88 townhouses, delivered eleven weeks early. Still our benchmark for handover." },
         "2019": { "year": "2019", "title": "One billion under management", "body": "The portfolio crosses 1B EGP. Sixty-one percent of new capital comes from existing clients." },
-        "2022": { "year": "2022", "title": "Commercial & institutional", "body": "First fund allocation. Rise opens a dedicated desk for institutional real assets." },
-        "2025": { "year": "2025", "title": "124 assets, 2.4B under management", "body": "Rise passes 890 investors served, with a 94% management-renewal rate." }
+        "2022": { "year": "2022", "title": "Commercial & institutional", "body": "First fund allocation. Amjad opens a dedicated desk for institutional real assets." },
+        "2025": { "year": "2025", "title": "124 assets, 2.4B under management", "body": "Amjad passes 890 investors served, with a 94% management-renewal rate." }
       }
     },
     "team": {
@@ -309,10 +309,10 @@
       "title": "Who you'll actually be dealing with",
       "description": "No call centre. You get a named advisor from the first call to the last report.",
       "members": {
-        "one": { "name": "Yousef Darwish", "role": "Founder & Managing Partner", "bio": "Sixteen years underwriting assets in this market. Signs off on every acquisition Rise makes." },
+        "one": { "name": "Yousef Darwish", "role": "Founder & Managing Partner", "bio": "Sixteen years underwriting assets in this market. Signs off on every acquisition Amjad makes." },
         "two": { "name": "Mariam Zaki", "role": "Head of Investment", "bio": "Built the yield model the whole firm runs on. Ex-institutional real assets." },
         "three": { "name": "Hassan Riad", "role": "Director of Development", "bio": "Runs delivery. Has never missed a published handover date — and mentions it often." },
-        "four": { "name": "Salma Nour", "role": "Head of Client Portfolio", "bio": "Manages the 890. If you've bought through Rise, you have her mobile number." }
+        "four": { "name": "Salma Nour", "role": "Head of Client Portfolio", "bio": "Manages the 890. If you've bought through Amjad, you have her mobile number." }
       }
     },
     "cta": {
@@ -351,7 +351,7 @@
       "selling": {
         "title": "Selling",
         "tagline": "Priced to move, not to linger",
-        "body": "We price against real closed comparables, stage and shoot the asset properly, and take it to our investor book before it ever hits a portal. Most Rise resales close off-market.",
+        "body": "We price against real closed comparables, stage and shoot the asset properly, and take it to our investor book before it ever hits a portal. Most Amjad resales close off-market.",
         "features": {
           "one": "Valuation from closed — not asking — comparables",
           "two": "Staging, photography and floor plans",
@@ -425,7 +425,7 @@
         }
       },
       "message": { "label": "Message", "placeholder": "Tell us what you're looking for, and your timeline…" },
-      "consent": "I agree to be contacted by Rise about my enquiry.",
+      "consent": "I agree to be contacted by Amjad about my enquiry.",
       "submit": "Send message",
       "submitting": "Sending…",
       "success": { "title": "Message sent", "body": "Thanks — an advisor will be in touch within two hours during business hours.", "again": "Send another message" },
@@ -444,7 +444,7 @@
     "info": {
       "title": "Office",
       "addressLabel": "Visit us",
-      "address": "Rise Tower, 90th Street North\nFifth Settlement, New Cairo\nCairo Governorate, Egypt",
+      "address": "Amjad Tower, 90th Street North\nFifth Settlement, New Cairo\nCairo Governorate, Egypt",
       "phoneLabel": "Call",
       "whatsappLabel": "WhatsApp",
       "emailLabel": "Email",
@@ -455,12 +455,12 @@
     "map": { "title": "Find us", "openInMaps": "Open in Google Maps" }
   },
   "footer": {
-    "about": "Rise designs, delivers and manages premium real estate assets across the region. Licensed, regulated, and still answering the phone after handover.",
+    "about": "Amjad designs, delivers and manages premium real estate assets across the region. Licensed, regulated, and still answering the phone after handover.",
     "explore": "Explore",
     "servicesTitle": "Services",
     "contactTitle": "Contact",
     "newsletter": {
-      "title": "The Rise brief",
+      "title": "The Amjad brief",
       "description": "New assets and a short market read. Once a month, no filler.",
       "placeholder": "your@email.com",
       "submit": "Subscribe",
@@ -470,12 +470,12 @@
       "privacy": "We never share your address. Unsubscribe anytime."
     },
     "social": { "title": "Follow", "facebook": "Facebook", "instagram": "Instagram", "linkedin": "LinkedIn", "x": "X", "youtube": "YouTube" },
-    "rights": "© {year} Rise Real Estate. All rights reserved.",
+    "rights": "© {year} Amjad Developments. All rights reserved.",
     "privacy": "Privacy policy",
     "terms": "Terms of use",
     "credits": "Real Investment & Smart Estates"
   },
-  "whatsapp": { "label": "Chat with us on WhatsApp", "tooltip": "Talk to an advisor", "prefill": "Hello Rise — I'd like to ask about a property." },
+  "whatsapp": { "label": "Chat with us on WhatsApp", "tooltip": "Talk to an advisor", "prefill": "Hello Amjad — I'd like to ask about a property." },
   "notFound": {
     "code": "404",
     "title": "This one's off the map",

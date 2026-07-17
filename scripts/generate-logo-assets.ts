@@ -3,80 +3,75 @@
  *
  *   npm run logo:assets
  *
- * Inputs:  logo.png — the supplied artwork: mark + wordmark + slogan on white.
- * Outputs: public/logo-mark.png        mark only, paper knocked out
- *          public/logo-mark-light.png  same, navy recoloured to sand
- *          app/icon.png                256px favicon, mark on a navy tile
+ * Input:   AmjadLogo.jpg — the supplied artwork: the "AMJAD" serif wordmark
+ *          over a tracked "DEVELOPMENTS" caption, dark-brown ink on a warm
+ *          cream field.
+ * Outputs: public/logo-mark.png        wordmark cut out, paper knocked out,
+ *                                       original espresso ink (for light bg)
+ *          public/logo-mark-light.png  same cut-out recoloured to cream
+ *                                       (for the dark header/footer)
+ *          app/icon.png                256px favicon — the "A" glyph on an
+ *                                       espresso tile
  *
- * Why this exists rather than a hand-cropped file: the derivatives stay
- * reproducible and their provenance stays obvious. Re-run it if `logo.png` is
- * ever replaced, then eyeball the three outputs.
- *
- * Two things this gets right that a naive crop does not:
- *
- *  1. **The paper is knocked out, all of it.** Every near-white pixel becomes
- *     transparent — including the counters enclosed inside the R. They were
- *     white-on-white in the original, so letting the page colour through is
- *     what the design already assumed.
- *
- *  2. **The mark is two-tone, so it needs two cut-outs.** Its towers are the
- *     brand navy and would vanish against the navy header. The `-light`
- *     variant recolours navy to sand and leaves the gold untouched.
+ * Why derivatives rather than the raw JPG: the artwork sits on an opaque cream
+ * field, which would show as a pale plate behind the logo on the site's dark
+ * header. Knocking the paper out to transparency — and providing a light-ink
+ * variant so the wordmark doesn't vanish against espresso — is what lets it sit
+ * cleanly on either background. Re-run this if AmjadLogo.jpg is replaced.
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
+import jpeg from 'jpeg-js';
 import { PNG } from 'pngjs';
 
 const ROOT = process.cwd();
-const SRC = path.join(ROOT, 'logo.png');
+const SRC = path.join(ROOT, 'AmjadLogo.jpg');
 
-/**
- * The mark's bounding box within the lock-up, found by scanning for bands of
- * rows containing ink: band 0 is the towers + R + arc, bands 1-3 are "RISE",
- * "REAL ESTATE" and the slogan. Hardcoded because the artwork is fixed; if the
- * logo is replaced, re-derive these with the band scan below.
- */
-const MARK_BOX = { x0: 263, y0: 168, x1: 978, y1: 699 };
-const PAD = 8;
+// Ink vs paper split, measured off the source: ink pixels sit far below the
+// cream field's ~L87%. Anything under this lightness is treated as ink.
+const INK_L = 45;
 
-const SAND: [number, number, number] = [254, 254, 254];
-const NAVY: [number, number, number] = [11, 20, 37];
+// Sampled anchors (see the brand-palette notes in tailwind.config.ts).
+const CREAM: [number, number, number] = [251, 250, 249]; // cream-50
+const ESPRESSO: [number, number, number] = [49, 27, 12]; // espresso-900
 
 const ICON_SIZE = 256;
-const ICON_INSET = 26;
+const ICON_INSET = 30;
 
-function hsl(r: number, g: number, b: number): [number, number, number] {
+function lightness(r: number, g: number, b: number): number {
   const rn = r / 255;
   const gn = g / 255;
   const bn = b / 255;
-  const max = Math.max(rn, gn, bn);
-  const min = Math.min(rn, gn, bn);
-  const l = (max + min) / 2;
-  let h = 0;
-  let s = 0;
-  if (max !== min) {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    if (max === rn) h = (gn - bn) / d + (gn < bn ? 6 : 0);
-    else if (max === gn) h = (bn - rn) / d + 2;
-    else h = (rn - gn) / d + 4;
-    h *= 60;
+  return ((Math.max(rn, gn, bn) + Math.min(rn, gn, bn)) / 2) * 100;
+}
+
+interface Decoded {
+  width: number;
+  height: number;
+  data: Uint8Array;
+}
+
+const isInk = (img: Decoded, x: number, y: number): boolean => {
+  const i = (img.width * y + x) * 4;
+  return lightness(img.data[i], img.data[i + 1], img.data[i + 2]) < INK_L;
+};
+
+/** Contiguous runs of rows/columns that contain ink, ignoring speckle. */
+function bands(profile: number[], minRun: number, floor: number): Array<[number, number]> {
+  const out: Array<[number, number]> = [];
+  let start: number | null = null;
+  for (let i = 0; i < profile.length; i++) {
+    const has = profile[i] > floor;
+    if (has && start === null) start = i;
+    if (!has && start !== null) {
+      if (i - start >= minRun) out.push([start, i - 1]);
+      start = null;
+    }
   }
-  return [h, s * 100, l * 100];
+  if (start !== null) out.push([start, profile.length - 1]);
+  return out;
 }
-
-/**
- * Gold is identified by hue + saturation, never by lightness: the logo's dark
- * gold (#A06F1F, L=37%) is darker than you'd guess, and a lightness test
- * misfiles it as navy and then recolours it to sand.
- */
-function isGold(r: number, g: number, b: number): boolean {
-  const [h, s] = hsl(r, g, b);
-  return h >= 20 && h <= 62 && s >= 25;
-}
-
-const isPaper = (r: number, g: number, b: number) => r >= 240 && g >= 240 && b >= 240;
 
 function main() {
   if (!fs.existsSync(SRC)) {
@@ -84,103 +79,125 @@ function main() {
     process.exit(1);
   }
 
-  const src = PNG.sync.read(fs.readFileSync(SRC));
-  const W = src.width;
+  const img = jpeg.decode(fs.readFileSync(SRC), { useTArray: true }) as Decoded;
+  const { width: W, height: H } = img;
 
-  const x0 = Math.max(0, MARK_BOX.x0 - PAD);
-  const y0 = Math.max(0, MARK_BOX.y0 - PAD);
-  const x1 = Math.min(src.width - 1, MARK_BOX.x1 + PAD);
-  const y1 = Math.min(src.height - 1, MARK_BOX.y1 + PAD);
+  // ── Bounding box of the whole lock-up (wordmark + caption) ───────────────
+  const rowInk: number[] = [];
+  for (let y = 0; y < H; y++) {
+    let c = 0;
+    for (let x = 0; x < W; x += 2) if (isInk(img, x, y)) c++;
+    rowInk.push(c);
+  }
+  const rowBands = bands(rowInk, 5, 3);
+  const y0 = rowBands[0][0];
+  const y1 = rowBands[rowBands.length - 1][1];
 
-  // Pad the crop to a square so the mark keeps its proportions in a square box.
-  const cw = x1 - x0 + 1;
-  const ch = y1 - y0 + 1;
-  const side = Math.max(cw, ch);
-  const offX = Math.floor((side - cw) / 2);
-  const offY = Math.floor((side - ch) / 2);
+  const colInk: number[] = [];
+  for (let x = 0; x < W; x++) {
+    let c = 0;
+    for (let y = y0; y <= y1; y++) if (isInk(img, x, y)) c++;
+    colInk.push(c);
+  }
+  const colBands = bands(colInk, 4, 1);
+  const x0 = colBands[0][0];
+  const x1 = colBands[colBands.length - 1][1];
 
-  const build = (recolorNavy: boolean) => {
-    const out = new PNG({ width: side, height: side });
-    out.data.fill(0);
+  const PAD = Math.round((y1 - y0) * 0.12);
 
-    for (let y = y0; y <= y1; y++) {
-      for (let x = x0; x <= x1; x++) {
-        const i = (W * y + x) << 2;
-        const r = src.data[i];
-        const g = src.data[i + 1];
-        const b = src.data[i + 2];
-        const a = src.data[i + 3];
+  /**
+   * Alpha ramps from 0 (paper) to 255 (ink) across a soft band around the
+   * threshold, so glyph edges stay smooth rather than aliased. `recolor`, when
+   * given, replaces the ink colour (used for the light variant).
+   */
+  const cut = (recolor?: [number, number, number]) => {
+    const bx0 = Math.max(0, x0 - PAD);
+    const by0 = Math.max(0, y0 - PAD);
+    const bx1 = Math.min(W - 1, x1 + PAD);
+    const by1 = Math.min(H - 1, y1 + PAD);
+    const w = bx1 - bx0 + 1;
+    const h = by1 - by0 + 1;
 
-        const o = (side * (y - y0 + offY) + (x - x0 + offX)) << 2;
+    const out = new PNG({ width: w, height: h });
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const si = (W * (y + by0) + (x + bx0)) * 4;
+        const di = (w * y + x) * 4;
+        const r = img.data[si];
+        const g = img.data[si + 1];
+        const b = img.data[si + 2];
+        const l = lightness(r, g, b);
 
-        if (a < 128 || isPaper(r, g, b)) {
-          out.data[o + 3] = 0;
-          continue;
-        }
+        // Alpha: fully opaque well below the threshold, fading to 0 above it.
+        const alpha = Math.round(255 * Math.min(1, Math.max(0, (INK_L + 10 - l) / 20)));
 
-        if (recolorNavy && !isGold(r, g, b)) {
-          [out.data[o], out.data[o + 1], out.data[o + 2]] = SAND;
+        if (recolor) {
+          out.data[di] = recolor[0];
+          out.data[di + 1] = recolor[1];
+          out.data[di + 2] = recolor[2];
         } else {
-          out.data[o] = r;
-          out.data[o + 1] = g;
-          out.data[o + 2] = b;
+          out.data[di] = r;
+          out.data[di + 1] = g;
+          out.data[di + 2] = b;
         }
-        out.data[o + 3] = 255;
+        out.data[di + 3] = alpha;
       }
     }
     return out;
   };
 
-  const mark = build(false);
-  const markLight = build(true);
-
+  const mark = cut();
+  const markLight = cut(CREAM);
   fs.writeFileSync(path.join(ROOT, 'public/logo-mark.png'), PNG.sync.write(mark));
-  fs.writeFileSync(
-    path.join(ROOT, 'public/logo-mark-light.png'),
-    PNG.sync.write(markLight),
-  );
+  fs.writeFileSync(path.join(ROOT, 'public/logo-mark-light.png'), PNG.sync.write(markLight));
 
-  // ── Favicon: box-filter downscale of the light mark onto a navy tile ──────
-  // A box filter (rather than nearest-neighbour) is what keeps the towers from
-  // shimmering apart at 16x reduction.
+  // ── Favicon: the "A" glyph (first column band) on an espresso tile ───────
+  const [ax0, ax1] = colBands[0];
+  // The caption row sits below the wordmark; restrict the favicon to the
+  // wordmark's own (tallest) row band so the "A" isn't shrunk by the caption.
+  const mainRow = rowBands.reduce((a, b) => (b[1] - b[0] > a[1] - a[0] ? b : a));
+  const gx0 = ax0;
+  const gx1 = ax1;
+  const gy0 = mainRow[0];
+  const gy1 = mainRow[1];
+  const gw = gx1 - gx0 + 1;
+  const gh = gy1 - gy0 + 1;
+  const glyphSide = Math.max(gw, gh);
+  const gOffX = Math.floor((glyphSide - gw) / 2);
+  const gOffY = Math.floor((glyphSide - gh) / 2);
+
   const icon = new PNG({ width: ICON_SIZE, height: ICON_SIZE });
-  const scale = side / (ICON_SIZE - ICON_INSET * 2);
-
+  const scale = glyphSide / (ICON_SIZE - ICON_INSET * 2);
   for (let y = 0; y < ICON_SIZE; y++) {
     for (let x = 0; x < ICON_SIZE; x++) {
-      const o = (ICON_SIZE * y + x) << 2;
-      let [r, g, b] = NAVY;
+      const o = (ICON_SIZE * y + x) * 4;
+      let [r, g, b] = ESPRESSO;
 
-      const sx0 = Math.floor((x - ICON_INSET) * scale);
-      const sy0 = Math.floor((y - ICON_INSET) * scale);
-      const sx1 = Math.floor((x - ICON_INSET + 1) * scale);
-      const sy1 = Math.floor((y - ICON_INSET + 1) * scale);
+      // Map back into the source glyph, box-filtering to avoid shimmer.
+      const sx0 = Math.floor((x - ICON_INSET) * scale) - gOffX + gx0;
+      const sy0 = Math.floor((y - ICON_INSET) * scale) - gOffY + gy0;
+      const sx1 = Math.floor((x - ICON_INSET + 1) * scale) - gOffX + gx0;
+      const sy1 = Math.floor((y - ICON_INSET + 1) * scale) - gOffY + gy0;
 
-      if (sx0 >= 0 && sy0 >= 0 && sx1 <= side && sy1 <= side && sx1 > sx0 && sy1 > sy0) {
-        let ar = 0;
-        let ag = 0;
-        let ab = 0;
-        let aa = 0;
-        let n = 0;
-
-        for (let sy = sy0; sy < sy1; sy++) {
-          for (let sx = sx0; sx < sx1; sx++) {
-            const i = (side * sy + sx) << 2;
-            const al = markLight.data[i + 3] / 255;
-            ar += markLight.data[i] * al;
-            ag += markLight.data[i + 1] * al;
-            ab += markLight.data[i + 2] * al;
-            aa += al;
+      let cover = 0;
+      let n = 0;
+      for (let sy = sy0; sy < sy1; sy++) {
+        for (let sx = sx0; sx < sx1; sx++) {
+          if (sx < 0 || sy < 0 || sx >= W || sy >= H) {
             n++;
+            continue;
           }
+          const si = (W * sy + sx) * 4;
+          const l = lightness(img.data[si], img.data[si + 1], img.data[si + 2]);
+          cover += Math.min(1, Math.max(0, (INK_L + 10 - l) / 20));
+          n++;
         }
-
-        if (n > 0 && aa > 0) {
-          const cov = aa / n; // ink coverage of this target pixel
-          r = (ar / aa) * cov + NAVY[0] * (1 - cov);
-          g = (ag / aa) * cov + NAVY[1] * (1 - cov);
-          b = (ab / aa) * cov + NAVY[2] * (1 - cov);
-        }
+      }
+      if (n > 0) {
+        const c = cover / n; // ink coverage → tint toward cream
+        r = CREAM[0] * c + ESPRESSO[0] * (1 - c);
+        g = CREAM[1] * c + ESPRESSO[1] * (1 - c);
+        b = CREAM[2] * c + ESPRESSO[2] * (1 - c);
       }
 
       icon.data[o] = Math.round(r);
@@ -189,12 +206,12 @@ function main() {
       icon.data[o + 3] = 255;
     }
   }
-
   fs.writeFileSync(path.join(ROOT, 'app/icon.png'), PNG.sync.write(icon));
 
   const kb = (p: string) => `${(fs.statSync(path.join(ROOT, p)).size / 1024).toFixed(1)}kb`;
-  console.log(`\n  mark        ${side}x${side}  ${kb('public/logo-mark.png')}`);
-  console.log(`  mark-light  ${side}x${side}  ${kb('public/logo-mark-light.png')}`);
+  console.log(`\n  lock-up box: x ${x0}..${x1}, y ${y0}..${y1}  (pad ${PAD})`);
+  console.log(`  mark        ${mark.width}x${mark.height}  ${kb('public/logo-mark.png')}`);
+  console.log(`  mark-light  ${markLight.width}x${markLight.height}  ${kb('public/logo-mark-light.png')}`);
   console.log(`  icon        ${ICON_SIZE}x${ICON_SIZE}  ${kb('app/icon.png')}\n`);
 }
 

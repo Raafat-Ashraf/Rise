@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Mail, MapPin, Phone } from 'lucide-react';
 
 import { Link } from '@/i18n/routing';
 import { mainNav, serviceLinks, socialLinks } from '@/lib/navigation';
@@ -7,21 +7,11 @@ import { contact, sanitizePhone } from '@/lib/utils';
 import { Logo } from './Logo';
 import { Newsletter } from './Newsletter';
 
+// Amjad currently publishes one social channel. The footer maps over whatever
+// `socialLinks` contains, so adding more later needs only a new entry here.
 const socialIcons = {
-  instagram: Instagram,
-  linkedin: Linkedin,
   facebook: Facebook,
-  // lucide has no X/Twitter glyph in this version; drawn inline below.
-  x: null,
 } as const;
-
-function XIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -48,7 +38,7 @@ export function Footer() {
 
             <ul className="mt-7 flex items-center gap-3">
               {socialLinks.map((social) => {
-                const Icon = socialIcons[social.key] ?? XIcon;
+                const Icon = socialIcons[social.key];
                 return (
                   <li key={social.key}>
                     <a

@@ -17,8 +17,8 @@ import { apiVersion, dataset, projectId, studioBasePath } from './sanity/env';
 import { schemaTypes } from './sanity/schemas';
 
 export default defineConfig({
-  name: 'rise-studio',
-  title: 'Rise — Content',
+  name: 'amjad-studio',
+  title: 'Amjad — Content',
   basePath: studioBasePath,
   projectId,
   dataset,
@@ -27,7 +27,7 @@ export default defineConfig({
     structureTool({
       structure: (S) =>
         S.list()
-          .title('Rise')
+          .title('Amjad')
           .items([
             S.listItem()
               .title('Properties')

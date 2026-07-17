@@ -39,7 +39,7 @@ export function StudioNotConfigured() {
             margin: '0 0 12px',
           }}
         >
-          Rise · Content Studio
+          Amjad · Content Studio
         </p>
         <h1 style={{ fontSize: 32, lineHeight: 1.15, margin: '0 0 16px', fontWeight: 700 }}>
           Connect a Sanity project to start editing

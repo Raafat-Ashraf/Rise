@@ -1,8 +1,8 @@
 {
-  "name": "rise-real-estate",
+  "name": "amjad-developments",
   "version": "1.0.0",
   "private": true,
-  "description": "Rise — Real Investment & Smart Estates. Premium bilingual (AR/EN) real estate investment website.",
+  "description": "Amjad — Real Investment & Smart Estates. Premium bilingual (AR/EN) real estate investment website.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -31,11 +31,13 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/jpeg-js": "^0.3.0",
     "@types/node": "^22.10.5",
     "@types/pngjs": "^6.0.5",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",
+    "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",

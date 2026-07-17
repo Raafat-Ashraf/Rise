@@ -58,7 +58,7 @@ export async function generateMetadata({
     metadataBase: new URL(siteUrl()),
     title: {
       default: t('title'),
-      // Every child page gets "· Rise" appended automatically.
+      // Every child page gets "· Amjad" appended automatically.
       template: `%s · ${tBrand('name')}`,
     },
     description: t('description'),

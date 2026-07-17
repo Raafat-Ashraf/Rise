@@ -21,7 +21,7 @@ const mariam: Agent = {
   role: { ar: 'رئيسة الاستثمار', en: 'Head of Investment' },
   phone: '+20 100 111 2020',
   whatsapp: '201001112020',
-  email: 'mariam@rise-estates.com',
+  email: 'mariam@amjad-developments.com',
 };
 
 const yousef: Agent = {
@@ -29,7 +29,7 @@ const yousef: Agent = {
   role: { ar: 'المؤسس والشريك الإداري', en: 'Founder & Managing Partner' },
   phone: '+20 100 111 3030',
   whatsapp: '201001113030',
-  email: 'yousef@rise-estates.com',
+  email: 'yousef@amjad-developments.com',
 };
 
 const salma: Agent = {
@@ -37,7 +37,7 @@ const salma: Agent = {
   role: { ar: 'رئيسة محافظ العملاء', en: 'Head of Client Portfolio' },
   phone: '+20 100 111 4040',
   whatsapp: '201001114040',
-  email: 'salma@rise-estates.com',
+  email: 'salma@amjad-developments.com',
 };
 
 export const demoAgents: Agent[] = [mariam, yousef, salma];
@@ -48,10 +48,10 @@ export const demoProperties: Property[] = [
   {
     _id: 'demo-rise-gardens-villa-12',
     slug: 'rise-gardens-villa-12',
-    title: { ar: 'فيلا 12 — حدائق رايز', en: 'Rise Gardens Villa 12' },
+    title: { ar: 'فيلا 12 — حدائق أمجد', en: 'Amjad Gardens Villa 12' },
     description: {
-      ar: 'فيلا مستقلة على قطعة ركنية داخل حدائق رايز، المشروع الذي سلَّمناه عام 2016 قبل موعده بأحد عشر أسبوعاً. أربع غرف نوم، جميعها بحمّامات خاصة، ومساحة معيشة مزدوجة الارتفاع تُطل على حديقة خاصة بمساحة 180 متراً. الوحدة مؤجَّرة حالياً بعائد 9.4% ويمكن تسليمها فارغة أو بعقد قائم.',
-      en: 'A detached villa on a corner plot inside Rise Gardens — the compound we delivered eleven weeks early back in 2016. Four bedrooms, all en-suite, with a double-height living space opening onto a private 180 m² garden. Currently tenanted at a 9.4% yield; available vacant or with the lease in place.',
+      ar: 'فيلا مستقلة على قطعة ركنية داخل حدائق أمجد، المشروع الذي سلَّمناه عام 2016 قبل موعده بأحد عشر أسبوعاً. أربع غرف نوم، جميعها بحمّامات خاصة، ومساحة معيشة مزدوجة الارتفاع تُطل على حديقة خاصة بمساحة 180 متراً. الوحدة مؤجَّرة حالياً بعائد 9.4% ويمكن تسليمها فارغة أو بعقد قائم.',
+      en: 'A detached villa on a corner plot inside Amjad Gardens — the compound we delivered eleven weeks early back in 2016. Four bedrooms, all en-suite, with a double-height living space opening onto a private 180 m² garden. Currently tenanted at a 9.4% yield; available vacant or with the lease in place.',
     },
     type: 'villa',
     status: 'for-sale',
@@ -61,7 +61,7 @@ export const demoProperties: Property[] = [
     area: 520,
     location: {
       city: { ar: 'القاهرة الجديدة', en: 'New Cairo' },
-      district: { ar: 'حدائق رايز، التجمع الخامس', en: 'Rise Gardens, Fifth Settlement' },
+      district: { ar: 'حدائق أمجد، التجمع الخامس', en: 'Amjad Gardens, Fifth Settlement' },
       lat: 30.0074,
       lng: 31.4913,
     },
@@ -239,7 +239,7 @@ export const demoProperties: Property[] = [
   {
     _id: 'demo-rise-business-park',
     slug: 'rise-business-park-floor-7',
-    title: { ar: 'رايز بيزنس بارك — الطابق السابع', en: 'Rise Business Park — Floor 7' },
+    title: { ar: 'أمجد بيزنس بارك — الطابق السابع', en: 'Amjad Business Park — Floor 7' },
     description: {
       ar: 'طابق مكتبي كامل بمساحة مفتوحة وواجهة زجاجية على محورين، جاهز للتقسيم حسب احتياج المستأجر. المبنى حاصل على شهادة LEED الفضية، وتكلفة التشغيل فيه أقل بنحو 22% من متوسط المنطقة — وهو الفارق الذي يهمّ فعلاً في عقد لخمس سنوات.',
       en: 'A full open-plan office floor with glazing on two elevations, ready to be partitioned to the tenant\'s spec. The building is LEED Silver certified and runs about 22% below the district average on operating cost — which is the number that actually matters across a five-year lease.',
@@ -259,7 +259,7 @@ export const demoProperties: Property[] = [
     gallery: [
       img('office-1', 'المساحة المكتبية المفتوحة', 'The open-plan office floor'),
       img('office-2', 'ردهة الاستقبال في المبنى', 'The building reception lobby'),
-      img('tower-3', 'واجهة رايز بيزنس بارك', 'The Rise Business Park façade'),
+      img('tower-3', 'واجهة أمجد بيزنس بارك', 'The Amjad Business Park façade'),
     ],
     features: [
       { ar: 'طابق مفتوح قابل للتقسيم', en: 'Open plan, partition-ready' },

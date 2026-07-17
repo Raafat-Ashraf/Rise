@@ -18,7 +18,7 @@ interface AgentCardProps {
 /**
  * The enquiry card on a property page.
  *
- * Falls back to the Rise desk when a listing has no advisor assigned, so the
+ * Falls back to the Amjad desk when a listing has no advisor assigned, so the
  * contact route is never dead. Every channel is pre-filled with the property
  * reference — the advisor knows what the enquiry is about before they answer.
  */

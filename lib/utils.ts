@@ -93,12 +93,12 @@ export function absoluteUrl(path: string): string {
 
 /** Contact channels, read once so components don't touch `process.env`. */
 export const contact = {
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '201000000000',
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || '+20 100 000 0000',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'invest@rise-estates.com',
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || '201122742408',
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || '+20 112 274 2408',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'amjadegypt33@gmail.com',
 } as const;
 
-/** Rise HQ — used by the contact map. */
+/** Amjad HQ — used by the contact map. */
 export const officeGeo = { lat: 30.0261, lng: 31.4703 } as const;
 
 export function clamp(value: number, min: number, max: number): number {

@@ -8,33 +8,30 @@ interface LogoProps {
   /** `light` is for the navy header/footer; `dark` for sand backgrounds. */
   tone?: 'dark' | 'light';
   className?: string;
-  /** Hides the wordmark, leaving just the mark. */
-  markOnly?: boolean;
 }
 
 /**
- * The Rise logo.
+ * The Amjad logo.
  *
- * The master artwork (`/logo.png`) is a full lock-up — mark, wordmark and
- * slogan on white paper — which is far too tall for a 72px header and brings a
- * white plate with it. So `scripts/`-generated derivatives are used instead
- * (see the mark generator in the README): the mark is cut out of the lock-up
- * with the paper knocked out to transparency, and the wordmark is set in live
- * text beside it — crisp at any size, translatable, and readable to search
- * engines and screen readers.
+ * The master artwork (`AmjadLogo.jpg`) is a serif wordmark — "AMJAD" over a
+ * tracked "DEVELOPMENTS" caption — on an opaque cream field, with no separate
+ * icon. `scripts/generate-logo-assets.ts` cuts the wordmark out and knocks the
+ * cream paper out to transparency, producing two variants: the espresso ink
+ * for light backgrounds, and a cream-recoloured copy for the dark header and
+ * footer (where the dark ink would otherwise vanish).
  *
- * Two cut-outs exist because the mark is two-tone: its towers are the brand
- * navy, which would vanish against the navy header. `logo-mark-light.png` is
- * the same artwork with the navy recoloured to sand, leaving the gold alone.
+ * Because the mark IS the wordmark, it's shown at its natural ~2.9:1 aspect
+ * ratio and carries the brand name itself — there's no separate text label
+ * beside it to duplicate. The accessible name comes from the alt text.
  */
-export function Logo({ tone = 'dark', className, markOnly = false }: LogoProps) {
+export function Logo({ tone = 'dark', className }: LogoProps) {
   const t = useTranslations('brand');
 
   return (
     <Link
       href="/"
       className={cn(
-        'group inline-flex items-center gap-3 rounded-lg focus-visible:outline-none',
+        'group inline-flex items-center rounded-lg focus-visible:outline-none',
         'focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2',
         tone === 'light'
           ? 'focus-visible:ring-offset-navy-900'
@@ -44,14 +41,16 @@ export function Logo({ tone = 'dark', className, markOnly = false }: LogoProps) 
       aria-label={`${t('name')} — ${t('tagline')}`}
     >
       {/*
-        Both cut-outs are rendered and crossfaded rather than swapped by src.
+        Both variants are rendered and crossfaded rather than swapped by src.
         The header flips tone the moment it condenses on scroll; swapping the
-        src would only start fetching the other mark at that instant, flashing
-        an empty box. Stacked, they're both in the page from the first paint and
-        the change rides along with the header's own transition. next/image
-        serves each into a 48px box, so the pair costs a couple of kb.
+        src would only start fetching the other variant at that instant,
+        flashing an empty box. Stacked, both are in the page from first paint
+        and the change rides along with the header's own transition.
+
+        Natural aspect ratio is ~2.9:1 (1139x394); the fixed height with
+        width:auto lets it lay out at the correct width without a wrapper box.
       */}
-      <span className="relative block size-11 shrink-0 sm:size-12">
+      <span className="relative block h-9 w-[104px] shrink-0 sm:h-10 sm:w-[116px]">
         {(
           [
             { src: '/logo-mark-light.png', visible: tone === 'light' },
@@ -61,34 +60,19 @@ export function Logo({ tone = 'dark', className, markOnly = false }: LogoProps) 
           <Image
             key={variant.src}
             src={variant.src}
-            alt=""
-            aria-hidden="true"
+            alt={variant.visible ? `${t('name')} — ${t('tagline')}` : ''}
+            aria-hidden={variant.visible ? undefined : true}
             fill
             priority
-            sizes="48px"
+            sizes="120px"
             className={cn(
-              'object-contain transition-all duration-500 ease-rise group-hover:scale-[1.06]',
+              'object-contain object-[left_center] transition-opacity duration-500 ease-rise',
+              'rtl:object-[right_center]',
               variant.visible ? 'opacity-100' : 'opacity-0',
             )}
           />
         ))}
       </span>
-
-      {!markOnly ? (
-        <span className="flex flex-col leading-none">
-          <span
-            className={cn(
-              'font-display text-xl font-bold tracking-tight transition-colors sm:text-[1.4rem]',
-              tone === 'light' ? 'text-sand-50' : 'text-navy-900',
-            )}
-          >
-            {t('name')}
-          </span>
-          <span className="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-gold-600">
-            {t('tagline')}
-          </span>
-        </span>
-      ) : null}
     </Link>
   );
 }
